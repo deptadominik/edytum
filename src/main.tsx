@@ -1,42 +1,725 @@
-import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Check, FileCheck2, FileText, GraduationCap, Languages, MapPin, Menu, MessageCircle, Phone, Quote, ShieldCheck, X } from 'lucide-react';
-import './style.css';
+import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  FileCheck2,
+  FileText,
+  GraduationCap,
+  Languages,
+  MapPin,
+  Menu,
+  MessageCircle,
+  Phone,
+  Quote,
+  ShieldCheck,
+  X,
+} from "lucide-react";
+import "./style.css";
 
-const nav = [ ['O mnie','#o-mnie'], ['Oferta','#oferta'], ['Nauka francuskiego','#nauka'], ['Referencje','#referencje'], ['Cennik','#cennik'] ] as const;
+const nav = [
+  ["O mnie", "#o-mnie"],
+  ["Oferta", "#oferta"],
+  ["Nauka francuskiego", "#nauka"],
+  ["Referencje", "#referencje"],
+  ["Cennik", "#cennik"],
+] as const;
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
-  return <>
-    <div className="topline"><span>FRANÇAIS · POLSKI</span><span>Tłumaczenia i nauka języka francuskiego</span><a href="tel:+48606110774">Zadzwoń: 606 110 774 <ArrowUpRight size={13}/></a></div>
-    <header className="header"><a href="#start" className="brand" aria-label="Strona główna"><span className="brand-mark">EK<span>·</span></span><span className="brand-name">Edyta Kaczmarczyk<small>Tłumacz przysięgły języka francuskiego</small></span></a>
-      <button className="menu-toggle" onClick={()=>setMenuOpen(!menuOpen)} aria-label={menuOpen?'Zamknij menu':'Otwórz menu'}>{menuOpen?<X/>:<Menu/>}</button>
-      <nav className={menuOpen?'nav open':'nav'}>{nav.map(([label,href])=><a key={href} href={href} onClick={closeMenu}>{label}</a>)}<a className="nav-contact" href="#kontakt" onClick={closeMenu}>Kontakt <ArrowUpRight size={15}/></a></nav>
-    </header>
-    <main>
-      <section className="hero" id="start"><div className="hero-copy"><div className="eyebrow"><span className="eyebrow-line"/>Jelenia Góra · od 2002 roku</div><h1>Słowa, które<br/><em>łączą światy.</em></h1><p className="hero-lead">Tłumaczenia przysięgłe i specjalistyczne z języka francuskiego oraz na język francuski. Rzetelnie, terminowo i z uważnością na każdy szczegół.</p><div className="hero-actions"><a className="button button-dark" href="#kontakt">Porozmawiajmy <ArrowRight size={17}/></a><a className="text-link" href="#oferta">Poznaj ofertę <ArrowDown size={15}/></a></div><div className="hero-proof"><div className="proof-seal"><ShieldCheck size={17}/></div><p><strong>TP/2445/06</strong><span>Wpis na listę Ministerstwa Sprawiedliwości</span></p></div></div>
-        <div className="hero-art"><div className="art-glow"/><div className="art-frame"><div className="art-top"><span>FR · PL</span><span>TRADUIRE / TŁUMACZYĆ</span></div><div className="art-word">bonjour<span>.</span></div><div className="art-translation">dzień dobry</div><div className="art-rule"/><div className="art-note">Każde słowo ma swoje miejsce.</div><div className="art-stamp">E<br/><small>K</small></div></div><div className="art-orbit orbit-one"/><div className="art-orbit orbit-two"/><div className="floating-note"><Languages size={18}/><span>français<br/><b>polski</b></span></div><div className="hero-caption">TŁUMACZENIA · EDUKACJA · JELENIA GÓRA</div></div>
-        <a href="#o-mnie" className="scroll-cue"><span/>Przewiń, aby poznać ofertę</a>
-      </section>
-      <section className="intro section" id="o-mnie"><div className="section-label"><span>01</span> O MNIE</div><div className="intro-body"><p className="overline">Bonjour, dzień dobry</p><h2>Francuski znam<br/>od <em>podszewki.</em></h2><div className="intro-columns"><p>Jestem tłumaczem przysięgłym języka francuskiego w Jeleniej Górze od 2002 roku. Zostałam wpisana na listę tłumaczy przysięgłych prowadzoną przez Ministerstwo Sprawiedliwości pod numerem <strong>TP/2445/06</strong>.</p><p>Jako tłumacz zapewniam rzetelność i terminowość. Od lat pracuję także jako nauczyciel i lektor języka francuskiego — z profesjonalizmem, skutecznością i indywidualnym podejściem.</p></div><div className="stats"><div><strong>2002</strong><span>początek praktyki</span></div><div><strong>TP</strong><span>uprawnienia przysięgłe</span></div><div><strong>FR ↔ PL</strong><span>dwa kierunki tłumaczeń</span></div></div></div></section>
-      <section className="services section" id="oferta"><div className="section-label"><span>02</span> ZAKRES USŁUG</div><div className="section-heading"><div><p className="overline">W czym mogę pomóc</p><h2>Uważnie dobrane<br/><em>słowa i rozwiązania.</em></h2></div><p className="heading-aside">Współpracuję z instytucjami, firmami i osobami prywatnymi.</p></div><div className="service-grid">
-        <article className="service-card card-featured"><div className="card-top"><span>01 / PISEMNE</span><FileCheck2/></div><h3>Tłumaczenia<br/>poświadczone</h3><p>Dokumenty urzędowe i prywatne wymagające formy tłumaczenia przysięgłego. Każdy element oryginału — pieczęcie, dopiski i odnośniki — jest ujęty w tłumaczeniu.</p><div className="tag-row"><span>Akty stanu cywilnego</span><span>Dokumenty samochodowe</span><span>Dyplomy i umowy</span></div><a href="#pisemne" className="card-link">Szczegóły <ArrowUpRight size={15}/></a></article>
-        <article className="service-card"><div className="card-top"><span>02 / SPECJALISTYCZNE</span><FileText/></div><h3>Tłumaczenia<br/>pisemne</h3><p>Teksty zwykłe i specjalistyczne z wielu dziedzin, z zachowaniem sensu, stylu i terminologii oryginału.</p><div className="tag-row"><span>Prawo</span><span>Medycyna</span><span>Handel</span><span>Technika</span></div><a href="#pisemne" className="card-link">Szczegóły <ArrowUpRight size={15}/></a></article>
-        <article className="service-card"><div className="card-top"><span>03 / USTNE</span><MessageCircle/></div><h3>Tłumaczenia<br/>ustne</h3><p>Wsparcie językowe podczas spotkań i wydarzeń. Czas pracy liczony jest od zamówionej do zakończonej godziny.</p><div className="tag-row"><span>Spotkania</span><span>Wydarzenia</span></div><a href="#ustne" className="card-link">Szczegóły <ArrowUpRight size={15}/></a></article>
-        <article className="service-card service-lesson"><div className="card-top"><span>04 / EDUKACJA</span><BookOpen/></div><h3>Nauka języka<br/>francuskiego</h3><p>Zajęcia indywidualne i w mini-grupach. Nauka na wszystkich poziomach, w rytmie dopasowanym do Twoich potrzeb.</p><div className="tag-row"><span>Konwersacje</span><span>DELF</span><span>Matura</span></div><a href="#nauka" className="card-link">Szczegóły <ArrowUpRight size={15}/></a></article>
-      </div></section>
-      <section className="details section" id="pisemne"><div className="section-label"><span>03</span> TŁUMACZENIA PISEMNE</div><div className="detail-grid"><div><p className="overline">Precyzja w każdym dokumencie</p><h2>Od aktu urodzenia<br/>po tekst <em>specjalistyczny.</em></h2><p className="detail-intro">Tłumaczę z języka polskiego na francuski i z francuskiego na polski. Wycena zależy od rodzaju, objętości i terminu realizacji tekstu.</p><a href="#kontakt" className="button button-outline">Zapytaj o wycenę <ArrowRight size={16}/></a></div><div className="detail-list"><div><span className="list-icon"><FileCheck2/></span><p><strong>Tłumaczenia przysięgłe</strong><small>Akty stanu cywilnego, dokumenty samochodowe, zaświadczenia, akty notarialne, pełnomocnictwa, umowy, dyplomy i świadectwa.</small></p></div><div><span className="list-icon"><FileText/></span><p><strong>Tłumaczenia zwykłe i specjalistyczne</strong><small>Teksty prawnicze, handlowe, techniczne, medyczne, ekonomiczne, publikacje naukowe, publicystyka, strony internetowe i materiały reklamowe.</small></p></div><div className="note-box"><span>i</span><p>Strona rozliczeniowa tłumaczenia przysięgłego to 1125 znaków ze spacjami. W tłumaczeniach zwykłych — 1500 znaków. Każda rozpoczęta strona liczona jest jako cała.</p></div></div></div></section>
-      <section className="oral section" id="ustne"><div className="oral-mark"><MessageCircle size={31}/><span>FR<br/>PL</span></div><div><p className="overline">Jasna komunikacja, pewny przebieg</p><h2>Tłumaczenia <em>ustne</em></h2><p>Czas pracy tłumacza liczony jest od godziny, na którą został zamówiony, do momentu zwolnienia z dalszego tłumaczenia przez Klienta. Przerwy uczestników spotkania lub konferencji wliczane są do czasu pracy tłumacza.</p><p>Proszę o wcześniejsze przekazanie materiałów związanych z tematyką spotkania. W przypadku zleceń poza Jelenią Górą Klient pokrywa koszty przejazdu i pobytu tłumacza.</p></div></section>
-      <section className="learning section" id="nauka"><div className="learning-art"><div className="learn-circle"><span>bonjour</span><span>bonjour</span><span>bonjour</span><span>bonjour</span><div className="learn-center"><GraduationCap size={29}/><b>FR</b></div></div><span className="learn-caption">Apprendre, c’est découvrir.</span></div><div className="learning-copy"><div className="section-label"><span>04</span> NAUKA JĘZYKA</div><p className="overline">Ucz się w swoim tempie</p><h2>Francuski, który<br/><em>otwiera drzwi.</em></h2><p>Jako nauczyciel i lektor z wieloletnim doświadczeniem proponuję naukę francuskiego na wszystkich poziomach. Łączę tradycyjne metody z nowoczesnymi, stawiając na komunikację, gry językowe i autentyczne materiały francuskojęzyczne.</p><div className="check-list"><span><Check size={15}/> Zajęcia indywidualne i mini-grupy dwuosobowe</span><span><Check size={15}/> Młodzież i dorośli, różne poziomy zaawansowania</span><span><Check size={15}/> Konwersacje, korepetycje, przygotowanie do matury i DELF</span><span><Check size={15}/> Spotkania na miejscu lub przez Skype</span></div><p className="learning-foot">Lekcje u siebie w domu lub u Klienta na terenie Jeleniej Góry. Gwarantuję indywidualne podejście i miłą atmosferę.</p><a href="#kontakt" className="text-link">Porozmawiajmy o lekcjach <ArrowRight size={15}/></a></div></section>
-      <section className="references section" id="referencje"><div className="section-label"><span>05</span> REFERENCJE</div><div className="references-content"><div><p className="overline">Zaufali mi</p><h2>Współpraca oparta<br/>na <em>zaufaniu.</em></h2></div><div className="reference-list"><div><span>01</span><p>Szkoła Języków Obcych <strong>„Premium”</strong></p><ArrowUpRight/></div><div><span>02</span><p>Jeleniogórska Rada Federacji Stowarzyszeń Naukowo-Technicznych <strong>NOT</strong></p><ArrowUpRight/></div><div><span>03</span><p>Kancelaria Tłumaczy Przysięgłych i Specjalistycznych <strong>„Translators”</strong></p><ArrowUpRight/></div><div><span>04</span><p>Biuro Tłumaczeń <strong>„Translation Agency Übersetzungsbüro”</strong></p><ArrowUpRight/></div></div></div></section>
-      <section className="pricing section" id="cennik"><div className="section-label"><span>06</span> CENNIK</div><div className="section-heading"><div><p className="overline">Przejrzyste zasady</p><h2>Cennik <em>usług.</em></h2></div><p className="heading-aside">Podane stawki pochodzą z dotychczasowej strony. Ostateczna wycena zależy od tekstu i terminu.</p></div><div className="price-columns"><div className="price-card"><div className="price-head"><span>TŁUMACZENIA PRZYSIĘGŁE</span><small>1125 znaków ze spacjami / strona</small></div><div className="price-line"><span>Na język polski</span><strong>50 <small>zł</small></strong></div><div className="price-line"><span>Na język francuski</span><strong>55 <small>zł</small></strong></div><div className="price-note"><span>Tryb ekspresowy</span><b>+50% do +100%</b></div><div className="price-note"><span>Tekst specjalistyczny</span><b>+25%</b></div></div><div className="price-card"><div className="price-head"><span>TŁUMACZENIA ZWYKŁE</span><small>1500 znaków ze spacjami / strona</small></div><div className="price-line"><span>Na język polski</span><strong>55 <small>zł</small></strong></div><div className="price-line"><span>Na język francuski</span><strong>65 <small>zł</small></strong></div><div className="price-note"><span>Tryb ekspresowy</span><b>+50% do +100%</b></div><div className="price-note"><span>Tekst specjalistyczny</span><b>+25%</b></div></div><div className="price-card compact"><div className="price-head"><span>USTNE I DODATKOWE</span><small>Usługi tłumaczeniowe</small></div><div className="price-line"><span>Tłumaczenie ustne / godz.</span><strong>250 <small>zł</small></strong></div><div className="price-note"><span>Poświadczenie odpisu pisma</span><b>30%</b></div><div className="price-note"><span>Sprawdzenie i poświadczenie tłumaczenia</span><b>50%</b></div><div className="price-note"><span>Odpis pisma i poświadczenie</span><b>50%</b></div><div className="price-note"><span>Trudno czytelny tekst</span><b>125%</b></div></div><div className="price-card compact lesson-price"><div className="price-head"><span>LEKCJE FRANCUSKIEGO</span><small>Indywidualnie lub w mini-grupie</small></div><div className="price-line"><span>Lekcja · 45 minut</span><strong>50 <small>zł</small></strong></div><div className="price-line"><span>Lekcja · 60 minut</span><strong>70 <small>zł</small></strong></div><p>Wystawiam rachunki. Dodatkowe koszty zleceń ustnych, takie jak dojazd, nocleg czy wyżywienie, pokrywa zleceniodawca.</p></div></div></section>
-      <section className="quote-band" id="referencje-cytat"><Quote size={24}/><p>Rzetelność i terminowość.<br/><em>Profesjonalizm i indywidualne podejście.</em></p><span>EDYTA KACZMARczyk · TŁUMACZ PRZYSIĘGŁY</span></section>
-      <section className="contact section" id="kontakt"><div className="section-label"><span>07</span> KONTAKT</div><div className="contact-grid"><div><p className="overline">Porozmawiajmy</p><h2>Masz pytanie?<br/><em>Napisz lub zadzwoń.</em></h2><p className="contact-lead">Zapraszam do współpracy. Przyjęcia odbywają się codziennie po wcześniejszym uzgodnieniu telefonicznym.</p><a href="mailto:edytum@wp.pl" className="button button-dark">Napisz wiadomość <ArrowRight size={16}/></a></div><div className="contact-card"><div className="contact-person"><span className="contact-monogram">EK</span><div><strong>mgr Edyta Kaczmarczyk</strong><small>Tłumacz przysięgły języka francuskiego</small></div></div><a href="tel:+48606110774" className="contact-row"><span><Phone/></span><div><small>Telefon komórkowy</small><strong>606 110 774</strong></div><ArrowUpRight/></a><a href="tel:+48756439088" className="contact-row"><span><Phone/></span><div><small>Telefon / faks</small><strong>75 64 39 088</strong></div><ArrowUpRight/></a><a href="mailto:edytum@wp.pl" className="contact-row"><span><MessageCircle/></span><div><small>Adres e-mail</small><strong>edytum@wp.pl</strong></div><ArrowUpRight/></a><div className="contact-row address"><span><MapPin/></span><div><small>Adres</small><strong>ul. Kochanowskiego 5A/16<br/>58-500 Jelenia Góra</strong><small>Blisko dworca PKP i liceum „Żeroma”</small></div></div></div></div></section>
-    </main>
-    <footer className="footer"><a href="#start" className="brand"><span className="brand-mark">EK<span>·</span></span><span className="brand-name">Edyta Kaczmarczyk<small>Tłumacz przysięgły języka francuskiego</small></span></a><div className="footer-nav">{nav.map(([label,href])=><a key={href} href={href}>{label}</a>)}<a href="#kontakt">Kontakt</a></div><p>© {new Date().getFullYear()} Edyta Kaczmarczyk <span>·</span> Jelenia Góra</p></footer>
-    <a className="mobile-call" href="tel:+48606110774"><Phone size={17}/> Zadzwoń</a>
-  </>;
+  return (
+    <>
+      <div className="topline">
+        <span>FRANÇAIS · POLSKI</span>
+        <span>Tłumaczenia i nauka języka francuskiego</span>
+        <a href="tel:+48606110774">
+          Zadzwoń: 606 110 774 <ArrowUpRight size={13} />
+        </a>
+      </div>
+      <header className="header">
+        <a href="#start" className="brand" aria-label="Strona główna">
+          <span className="brand-mark">
+            EK<span>·</span>
+          </span>
+          <span className="brand-name">
+            Edyta Kaczmarczyk
+            <small>Tłumacz przysięgły języka francuskiego</small>
+          </span>
+        </a>
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
+        >
+          {menuOpen ? <X /> : <Menu />}
+        </button>
+        <nav className={menuOpen ? "nav open" : "nav"}>
+          {nav.map(([label, href]) => (
+            <a key={href} href={href} onClick={closeMenu}>
+              {label}
+            </a>
+          ))}
+          <a className="nav-contact" href="#kontakt" onClick={closeMenu}>
+            Kontakt <ArrowUpRight size={15} />
+          </a>
+        </nav>
+      </header>
+      <main>
+        <section className="hero" id="start">
+          <div className="hero-copy">
+            <div className="eyebrow">
+              <span className="eyebrow-line" />
+              Jelenia Góra · od 2002 roku
+            </div>
+            <h1>
+              Słowa, które
+              <br />
+              <em>łączą światy.</em>
+            </h1>
+            <p className="hero-lead">
+              Tłumaczenia przysięgłe i specjalistyczne z języka francuskiego
+              oraz na język francuski. Rzetelnie, terminowo i z uważnością na
+              każdy szczegół.
+            </p>
+            <div className="hero-actions">
+              <a className="button button-dark" href="#kontakt">
+                Porozmawiajmy <ArrowRight size={17} />
+              </a>
+              <a className="text-link" href="#oferta">
+                Poznaj ofertę <ArrowDown size={15} />
+              </a>
+            </div>
+            <div className="hero-proof">
+              <div className="proof-seal">
+                <ShieldCheck size={17} />
+              </div>
+              <p>
+                <strong>TP/2445/06</strong>
+                <span>Wpis na listę Ministerstwa Sprawiedliwości</span>
+              </p>
+            </div>
+          </div>
+          <div className="hero-art">
+            <div className="art-glow" />
+            <div className="art-frame">
+              <div className="art-top">
+                <span>FR · PL</span>
+                <span>TRADUIRE / TŁUMACZYĆ</span>
+              </div>
+              <div className="art-word">
+                bonjour<span>.</span>
+              </div>
+              <div className="art-translation">dzień dobry</div>
+              <div className="art-rule" />
+              <div className="art-note">Każde słowo ma swoje miejsce.</div>
+              <div className="art-stamp">
+                E<br />
+                <small>K</small>
+              </div>
+            </div>
+            <div className="art-orbit orbit-one" />
+            <div className="art-orbit orbit-two" />
+            <div className="floating-note">
+              <Languages size={18} />
+              <span>
+                français
+                <br />
+                <b>polski</b>
+              </span>
+            </div>
+            <div className="hero-caption">
+              TŁUMACZENIA · EDUKACJA · JELENIA GÓRA
+            </div>
+          </div>
+          <a href="#o-mnie" className="scroll-cue">
+            <span />
+            Przewiń, aby poznać ofertę
+          </a>
+        </section>
+        <section className="intro section" id="o-mnie">
+          <div className="section-label">
+            <span>01</span> O MNIE
+          </div>
+          <div className="intro-body">
+            <p className="overline">Bonjour, dzień dobry</p>
+            <h2>
+              Francuski znam
+              <br />
+              od <em>podszewki.</em>
+            </h2>
+            <div className="intro-columns">
+              <p>
+                Jestem tłumaczem przysięgłym języka francuskiego w Jeleniej
+                Górze od 2002 roku. Zostałam wpisana na listę tłumaczy
+                przysięgłych prowadzoną przez Ministerstwo Sprawiedliwości pod
+                numerem <strong>TP/2445/06</strong>.
+              </p>
+              <p>
+                Jako tłumacz zapewniam rzetelność i terminowość. Od lat pracuję
+                także jako nauczyciel i lektor języka francuskiego - z
+                profesjonalizmem, skutecznością i indywidualnym podejściem.
+              </p>
+            </div>
+            <div className="stats">
+              <div>
+                <strong>2002</strong>
+                <span>początek praktyki</span>
+              </div>
+              <div>
+                <strong>TP</strong>
+                <span>uprawnienia przysięgłe</span>
+              </div>
+              <div>
+                <strong>FR ↔ PL</strong>
+                <span>dwa kierunki tłumaczeń</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="services section" id="oferta">
+          <div className="section-label">
+            <span>02</span> ZAKRES USŁUG
+          </div>
+          <div className="section-heading">
+            <div>
+              <p className="overline">W czym mogę pomóc</p>
+              <h2>
+                Uważnie dobrane
+                <br />
+                <em>słowa i rozwiązania.</em>
+              </h2>
+            </div>
+            <p className="heading-aside">
+              Współpracuję z instytucjami, firmami i osobami prywatnymi.
+            </p>
+          </div>
+          <div className="service-grid">
+            <article className="service-card card-featured">
+              <div className="card-top">
+                <span>01 / PISEMNE</span>
+                <FileCheck2 />
+              </div>
+              <h3>
+                Tłumaczenia
+                <br />
+                poświadczone
+              </h3>
+              <p>
+                Dokumenty urzędowe i prywatne wymagające formy tłumaczenia
+                przysięgłego. Każdy element oryginału - pieczęcie, dopiski i
+                odnośniki - jest ujęty w tłumaczeniu.
+              </p>
+              <div className="tag-row">
+                <span>Akty stanu cywilnego</span>
+                <span>Dokumenty samochodowe</span>
+                <span>Dyplomy i umowy</span>
+              </div>
+              <a href="#pisemne" className="card-link">
+                Szczegóły <ArrowUpRight size={15} />
+              </a>
+            </article>
+            <article className="service-card">
+              <div className="card-top">
+                <span>02 / SPECJALISTYCZNE</span>
+                <FileText />
+              </div>
+              <h3>
+                Tłumaczenia
+                <br />
+                pisemne
+              </h3>
+              <p>
+                Teksty zwykłe i specjalistyczne z wielu dziedzin, z zachowaniem
+                sensu, stylu i terminologii oryginału.
+              </p>
+              <div className="tag-row">
+                <span>Prawo</span>
+                <span>Medycyna</span>
+                <span>Handel</span>
+                <span>Technika</span>
+              </div>
+              <a href="#pisemne" className="card-link">
+                Szczegóły <ArrowUpRight size={15} />
+              </a>
+            </article>
+            <article className="service-card">
+              <div className="card-top">
+                <span>03 / USTNE</span>
+                <MessageCircle />
+              </div>
+              <h3>
+                Tłumaczenia
+                <br />
+                ustne
+              </h3>
+              <p>
+                Wsparcie językowe podczas spotkań i wydarzeń. Czas pracy liczony
+                jest od zamówionej do zakończonej godziny.
+              </p>
+              <div className="tag-row">
+                <span>Spotkania</span>
+                <span>Wydarzenia</span>
+              </div>
+              <a href="#ustne" className="card-link">
+                Szczegóły <ArrowUpRight size={15} />
+              </a>
+            </article>
+            <article className="service-card service-lesson">
+              <div className="card-top">
+                <span>04 / EDUKACJA</span>
+                <BookOpen />
+              </div>
+              <h3>
+                Nauka języka
+                <br />
+                francuskiego
+              </h3>
+              <p>
+                Zajęcia indywidualne i w mini-grupach. Nauka na wszystkich
+                poziomach, w rytmie dopasowanym do Twoich potrzeb.
+              </p>
+              <div className="tag-row">
+                <span>Konwersacje</span>
+                <span>DELF</span>
+                <span>Matura</span>
+              </div>
+              <a href="#nauka" className="card-link">
+                Szczegóły <ArrowUpRight size={15} />
+              </a>
+            </article>
+          </div>
+        </section>
+        <section className="details section" id="pisemne">
+          <div className="section-label">
+            <span>03</span> TŁUMACZENIA PISEMNE
+          </div>
+          <div className="detail-grid">
+            <div>
+              <p className="overline">Precyzja w każdym dokumencie</p>
+              <h2>
+                Od aktu urodzenia
+                <br />
+                po tekst <em>specjalistyczny.</em>
+              </h2>
+              <p className="detail-intro">
+                Tłumaczę z języka polskiego na francuski i z francuskiego na
+                polski. Wycena zależy od rodzaju, objętości i terminu realizacji
+                tekstu.
+              </p>
+              <a href="#kontakt" className="button button-outline">
+                Zapytaj o wycenę <ArrowRight size={16} />
+              </a>
+            </div>
+            <div className="detail-list">
+              <div>
+                <span className="list-icon">
+                  <FileCheck2 />
+                </span>
+                <p>
+                  <strong>Tłumaczenia przysięgłe</strong>
+                  <small>
+                    Akty stanu cywilnego, dokumenty samochodowe, zaświadczenia,
+                    akty notarialne, pełnomocnictwa, umowy, dyplomy i
+                    świadectwa.
+                  </small>
+                </p>
+              </div>
+              <div>
+                <span className="list-icon">
+                  <FileText />
+                </span>
+                <p>
+                  <strong>Tłumaczenia zwykłe i specjalistyczne</strong>
+                  <small>
+                    Teksty prawnicze, handlowe, techniczne, medyczne,
+                    ekonomiczne, publikacje naukowe, publicystyka, strony
+                    internetowe i materiały reklamowe.
+                  </small>
+                </p>
+              </div>
+              <div className="note-box">
+                <span>i</span>
+                <p>
+                  Strona rozliczeniowa tłumaczenia przysięgłego to 1125 znaków
+                  ze spacjami. W tłumaczeniach zwykłych - 1500 znaków. Każda
+                  rozpoczęta strona liczona jest jako cała.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="oral section" id="ustne">
+          <div className="oral-mark">
+            <MessageCircle size={31} />
+            <span>
+              FR
+              <br />
+              PL
+            </span>
+          </div>
+          <div>
+            <p className="overline">Jasna komunikacja, pewny przebieg</p>
+            <h2>
+              Tłumaczenia <em>ustne</em>
+            </h2>
+            <p>
+              Czas pracy tłumacza liczony jest od godziny, na którą został
+              zamówiony, do momentu zwolnienia z dalszego tłumaczenia przez
+              Klienta. Przerwy uczestników spotkania lub konferencji wliczane są
+              do czasu pracy tłumacza.
+            </p>
+            <p>
+              Proszę o wcześniejsze przekazanie materiałów związanych z tematyką
+              spotkania. W przypadku zleceń poza Jelenią Górą Klient pokrywa
+              koszty przejazdu i pobytu tłumacza.
+            </p>
+          </div>
+        </section>
+        <section className="learning section" id="nauka">
+          <div className="learning-art">
+            <div className="learn-circle">
+              <span>bonjour</span>
+              <span>bonjour</span>
+              <span>bonjour</span>
+              <span>bonjour</span>
+              <div className="learn-center">
+                <GraduationCap size={29} />
+                <b>FR</b>
+              </div>
+            </div>
+            <span className="learn-caption">Apprendre, c’est découvrir.</span>
+          </div>
+          <div className="learning-copy">
+            <div className="section-label">
+              <span>04</span> NAUKA JĘZYKA
+            </div>
+            <p className="overline">Ucz się w swoim tempie</p>
+            <h2>
+              Francuski, który
+              <br />
+              <em>otwiera drzwi.</em>
+            </h2>
+            <p>
+              Jako nauczyciel i lektor z wieloletnim doświadczeniem proponuję
+              naukę francuskiego na wszystkich poziomach. Łączę tradycyjne
+              metody z nowoczesnymi, stawiając na komunikację, gry językowe i
+              autentyczne materiały francuskojęzyczne.
+            </p>
+            <div className="check-list">
+              <span>
+                <Check size={15} /> Zajęcia indywidualne i mini-grupy dwuosobowe
+              </span>
+              <span>
+                <Check size={15} /> Młodzież i dorośli, różne poziomy
+                zaawansowania
+              </span>
+              <span>
+                <Check size={15} /> Konwersacje, korepetycje, przygotowanie do
+                matury i DELF
+              </span>
+              <span>
+                <Check size={15} /> Spotkania na miejscu lub przez Skype
+              </span>
+            </div>
+            <p className="learning-foot">
+              Lekcje u siebie w domu lub u Klienta na terenie Jeleniej Góry.
+              Gwarantuję indywidualne podejście i miłą atmosferę.
+            </p>
+            <a href="#kontakt" className="text-link">
+              Porozmawiajmy o lekcjach <ArrowRight size={15} />
+            </a>
+          </div>
+        </section>
+        <section className="references section" id="referencje">
+          <div className="section-label">
+            <span>05</span> REFERENCJE
+          </div>
+          <div className="references-content">
+            <div>
+              <p className="overline">Zaufali mi</p>
+              <h2>
+                Współpraca oparta
+                <br />
+                na <em>zaufaniu.</em>
+              </h2>
+            </div>
+            <div className="reference-list">
+              <div>
+                <span>01</span>
+                <p>
+                  Szkoła Języków Obcych <strong>„Premium”</strong>
+                </p>
+                <ArrowUpRight />
+              </div>
+              <div>
+                <span>02</span>
+                <p>
+                  Jeleniogórska Rada Federacji Stowarzyszeń Naukowo-Technicznych{" "}
+                  <strong>NOT</strong>
+                </p>
+                <ArrowUpRight />
+              </div>
+              <div>
+                <span>03</span>
+                <p>
+                  Kancelaria Tłumaczy Przysięgłych i Specjalistycznych{" "}
+                  <strong>„Translators”</strong>
+                </p>
+                <ArrowUpRight />
+              </div>
+              <div>
+                <span>04</span>
+                <p>
+                  Biuro Tłumaczeń{" "}
+                  <strong>„Translation Agency Übersetzungsbüro”</strong>
+                </p>
+                <ArrowUpRight />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="pricing section" id="cennik">
+          <div className="section-label">
+            <span>06</span> CENNIK
+          </div>
+          <div className="section-heading">
+            <div>
+              <p className="overline">Przejrzyste zasady</p>
+              <h2>
+                Cennik <em>usług.</em>
+              </h2>
+            </div>
+            <p className="heading-aside">
+              Podane stawki pochodzą z dotychczasowej strony. Ostateczna wycena
+              zależy od tekstu i terminu.
+            </p>
+          </div>
+          <div className="price-columns">
+            <div className="price-card">
+              <div className="price-head">
+                <span>TŁUMACZENIA PRZYSIĘGŁE</span>
+                <small>1125 znaków ze spacjami / strona</small>
+              </div>
+              <div className="price-line">
+                <span>Na język polski</span>
+                <strong>
+                  50 <small>zł</small>
+                </strong>
+              </div>
+              <div className="price-line">
+                <span>Na język francuski</span>
+                <strong>
+                  55 <small>zł</small>
+                </strong>
+              </div>
+              <div className="price-note">
+                <span>Tryb ekspresowy</span>
+                <b>+50% do +100%</b>
+              </div>
+              <div className="price-note">
+                <span>Tekst specjalistyczny</span>
+                <b>+25%</b>
+              </div>
+            </div>
+            <div className="price-card">
+              <div className="price-head">
+                <span>TŁUMACZENIA ZWYKŁE</span>
+                <small>1500 znaków ze spacjami / strona</small>
+              </div>
+              <div className="price-line">
+                <span>Na język polski</span>
+                <strong>
+                  55 <small>zł</small>
+                </strong>
+              </div>
+              <div className="price-line">
+                <span>Na język francuski</span>
+                <strong>
+                  65 <small>zł</small>
+                </strong>
+              </div>
+              <div className="price-note">
+                <span>Tryb ekspresowy</span>
+                <b>+50% do +100%</b>
+              </div>
+              <div className="price-note">
+                <span>Tekst specjalistyczny</span>
+                <b>+25%</b>
+              </div>
+            </div>
+            <div className="price-card compact">
+              <div className="price-head">
+                <span>USTNE I DODATKOWE</span>
+                <small>Usługi tłumaczeniowe</small>
+              </div>
+              <div className="price-line">
+                <span>Tłumaczenie ustne / godz.</span>
+                <strong>
+                  250 <small>zł</small>
+                </strong>
+              </div>
+              <div className="price-note">
+                <span>Poświadczenie odpisu pisma</span>
+                <b>30%</b>
+              </div>
+              <div className="price-note">
+                <span>Sprawdzenie i poświadczenie tłumaczenia</span>
+                <b>50%</b>
+              </div>
+              <div className="price-note">
+                <span>Odpis pisma i poświadczenie</span>
+                <b>50%</b>
+              </div>
+              <div className="price-note">
+                <span>Trudno czytelny tekst</span>
+                <b>125%</b>
+              </div>
+            </div>
+            <div className="price-card compact lesson-price">
+              <div className="price-head">
+                <span>LEKCJE FRANCUSKIEGO</span>
+                <small>Indywidualnie lub w mini-grupie</small>
+              </div>
+              <div className="price-line">
+                <span>Lekcja · 45 minut</span>
+                <strong>
+                  50 <small>zł</small>
+                </strong>
+              </div>
+              <div className="price-line">
+                <span>Lekcja · 60 minut</span>
+                <strong>
+                  70 <small>zł</small>
+                </strong>
+              </div>
+              <p>
+                Wystawiam rachunki. Dodatkowe koszty zleceń ustnych, takie jak
+                dojazd, nocleg czy wyżywienie, pokrywa zleceniodawca.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section className="quote-band" id="referencje-cytat">
+          <Quote size={24} />
+          <p>
+            Rzetelność i terminowość.
+            <br />
+            <em>Profesjonalizm i indywidualne podejście.</em>
+          </p>
+          <span>EDYTA KACZMARCZYK · TŁUMACZ PRZYSIĘGŁY</span>
+        </section>
+        <section className="contact section" id="kontakt">
+          <div className="section-label">
+            <span>07</span> KONTAKT
+          </div>
+          <div className="contact-grid">
+            <div>
+              <p className="overline">Porozmawiajmy</p>
+              <h2>
+                Masz pytanie?
+                <br />
+                <em>Napisz lub zadzwoń.</em>
+              </h2>
+              <p className="contact-lead">
+                Zapraszam do współpracy. Przyjęcia odbywają się codziennie po
+                wcześniejszym uzgodnieniu telefonicznym.
+              </p>
+              <a href="mailto:edytum@wp.pl" className="button button-dark">
+                Napisz wiadomość <ArrowRight size={16} />
+              </a>
+            </div>
+            <div className="contact-card">
+              <div className="contact-person">
+                <span className="contact-monogram">EK</span>
+                <div>
+                  <strong>mgr Edyta Kaczmarczyk</strong>
+                  <small>Tłumacz przysięgły języka francuskiego</small>
+                </div>
+              </div>
+              <a href="tel:+48606110774" className="contact-row">
+                <span>
+                  <Phone />
+                </span>
+                <div>
+                  <small>Telefon komórkowy</small>
+                  <strong>606 110 774</strong>
+                </div>
+                <ArrowUpRight />
+              </a>
+              <a href="tel:+48756439088" className="contact-row">
+                <span>
+                  <Phone />
+                </span>
+                <div>
+                  <small>Telefon / faks</small>
+                  <strong>75 64 39 088</strong>
+                </div>
+                <ArrowUpRight />
+              </a>
+              <a href="mailto:edytum@wp.pl" className="contact-row">
+                <span>
+                  <MessageCircle />
+                </span>
+                <div>
+                  <small>Adres e-mail</small>
+                  <strong>edytum@wp.pl</strong>
+                </div>
+                <ArrowUpRight />
+              </a>
+              <div className="contact-row address">
+                <span>
+                  <MapPin />
+                </span>
+                <div>
+                  <small>Adres</small>
+                  <strong>
+                    ul. Kochanowskiego 5A/16
+                    <br />
+                    58-500 Jelenia Góra
+                  </strong>
+                  <small>Blisko dworca PKP i liceum „Żeroma”</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="footer">
+        <a href="#start" className="brand">
+          <span className="brand-mark">
+            EK<span>·</span>
+          </span>
+          <span className="brand-name">
+            Edyta Kaczmarczyk
+            <small>Tłumacz przysięgły języka francuskiego</small>
+          </span>
+        </a>
+        <div className="footer-nav">
+          {nav.map(([label, href]) => (
+            <a key={href} href={href}>
+              {label}
+            </a>
+          ))}
+          <a href="#kontakt">Kontakt</a>
+        </div>
+        <p>
+          © {new Date().getFullYear()} Edyta Kaczmarczyk <span>·</span> Jelenia
+          Góra
+        </p>
+      </footer>
+      <a className="mobile-call" href="tel:+48606110774">
+        <Phone size={17} /> Zadzwoń
+      </a>
+    </>
+  );
 }
 
-createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
+createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

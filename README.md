@@ -1,4 +1,4 @@
-# Edyta Kaczmarczyk — tłumacz przysięgły języka francuskiego
+# Edyta Kaczmarczyk - tłumacz przysięgły języka francuskiego
 
 Strona wizytówka zbudowana w React, TypeScript i Vite.
 
