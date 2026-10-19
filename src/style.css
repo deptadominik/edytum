@@ -3,3 +3,64 @@
 @media(max-width:1050px){.header{padding:0 4%}.nav{gap:17px}.nav>a{font-size:10px}.hero{padding-left:7%;padding-right:7%}.section{padding-left:7%;padding-right:7%}.scroll-cue{left:7%}.footer{padding-left:4%;padding-right:4%}.footer-nav{gap:11px}}
 @media(max-width:760px){.topline{padding:0 5%;height:31px}.topline span:nth-child(2){display:none}.header{height:70px;padding:0 5%}.menu-toggle{display:block;padding:8px}.menu-toggle svg{width:20px}.nav{display:none;position:absolute;top:69px;left:0;right:0;background:#f7f6f1;border-bottom:1px solid var(--line);padding:12px 5% 22px;align-items:stretch;gap:0;flex-direction:column}.nav.open{display:flex}.nav>a{padding:13px 0;border-bottom:1px solid #e9eae4;font-size:12px}.nav .nav-contact{border:0;padding:13px 0}.hero{padding:65px 7% 65px;grid-template-columns:1fr;min-height:auto}.hero h1{font-size:62px}.hero-copy{max-width:100%}.hero-art{height:390px;margin-top:16px}.art-frame{height:320px;width:300px}.art-word{margin-top:68px;font-size:47px}.art-glow{width:310px;height:310px;top:37px}.art-orbit{width:350px;height:350px}.floating-note{right:2%;top:40px}.hero-caption{right:6%;bottom:0}.scroll-cue{left:7%;bottom:22px}.section{padding:69px 7%}.intro{grid-template-columns:1fr;gap:28px}.intro-columns{grid-template-columns:1fr;gap:12px}.stats{gap:27px;justify-content:space-between}.stats strong{font-size:18px}.stats span{font-size:8px}.section-heading{align-items:flex-start;gap:20px;flex-direction:column}.section-heading h2,.section h2{font-size:39px}.heading-aside{max-width:320px}.service-grid{grid-template-columns:1fr}.service-card{min-height:285px;padding:24px}.detail-grid{grid-template-columns:1fr;gap:35px}.detail-grid h2{font-size:36px}.oral{grid-template-columns:1fr;gap:27px}.oral-mark{margin:0 0 0 12px;width:100px;height:100px}.learning{grid-template-columns:1fr;gap:36px}.learning-art{min-height:320px;order:2}.learning-copy .section-label{margin-bottom:33px}.references-content{grid-template-columns:1fr;gap:28px}.price-columns{grid-template-columns:1fr}.quote-band{padding:34px 7%;flex-wrap:wrap;gap:14px}.quote-band>p{font-size:17px}.quote-band>span{margin:5px 0 0 38px;width:100%}.contact-grid{grid-template-columns:1fr;gap:32px}.contact h2{font-size:38px}.footer{grid-template-columns:1fr auto;gap:20px;padding:25px 6%}.footer-nav{display:none}.footer>p{font-size:8px}.mobile-call{position:fixed;bottom:14px;right:14px;z-index:9;display:flex;align-items:center;gap:8px;background:#344a3f;color:white;padding:13px 18px;box-shadow:0 5px 18px #0002;font-size:11px}.topline a{font-size:8px}}
 @media(max-width:390px){.hero h1{font-size:53px}.art-frame{width:270px}.hero-art{height:355px}.art-orbit{width:320px;height:320px}.stats{gap:12px}.stats strong{font-size:16px}.stats span{font-size:7px}.footer .brand-name small{max-width:160px}}
+
+/* Larger type for comfortable reading across desktop and mobile. */
+.topline{font-size:10px}
+.topline a{font-size:10px}
+.brand-name{font-size:14px}
+.brand-name small{font-size:10px}
+.nav>a{font-size:13px}
+.hero-lead{font-size:16px;line-height:1.8}
+.hero-proof p span{font-size:11px}
+.scroll-cue{font-size:11px}
+.section-label{font-size:10px}
+.overline{font-size:11px}
+.intro-columns p{font-size:15px;line-height:1.8}
+.stats span{font-size:10px}
+.heading-aside{font-size:13px}
+.service-card p{font-size:14px;line-height:1.75}
+.tag-row span{font-size:10px}
+.card-link{font-size:12px}
+.detail-intro,.oral p,.learning-copy>p:not(.overline):not(.learning-foot){font-size:14px;line-height:1.8}
+.detail-list p strong{font-size:13px}
+.detail-list p small{font-size:12px;line-height:1.7}
+.note-box p{font-size:11px}
+.check-list span{font-size:12px}
+.learning-copy .learning-foot{font-size:12px}
+.reference-list p{font-size:13px}
+.price-head>span{font-size:10px}
+.price-head small{font-size:10px}
+.price-line{font-size:13px}
+.price-note{font-size:11px}
+.lesson-price p{font-size:11px}
+.quote-band>span{font-size:9px}
+.contact-lead{font-size:13px;line-height:1.8}
+.contact-person strong{font-size:13px}
+.contact-person small{font-size:10px}
+.contact-row>div small{font-size:10px}
+.contact-row>div strong{font-size:12px}
+.footer-nav a{font-size:10px}
+.footer>p{font-size:10px}
+.art-top{font-size:9px}
+.art-note{font-size:13px}
+.hero-caption{font-size:9px}
+.floating-note span{font-size:14px}
+.button{font-size:13px}
+.text-link{font-size:12px}
+@media(max-width:760px){
+  .nav>a{font-size:14px}
+  .hero-lead{font-size:16px}
+  .intro-columns p{font-size:15px}
+  .stats span{font-size:9px}
+  .service-card p{font-size:14px}
+  .detail-intro,.oral p,.learning-copy>p:not(.overline):not(.learning-foot){font-size:14px}
+  .detail-list p small{font-size:12px}
+  .check-list span{font-size:12px}
+  .reference-list p{font-size:13px}
+  .price-line{font-size:13px}
+  .price-note{font-size:11px}
+  .contact-lead{font-size:14px}
+  .contact-row>div strong{font-size:13px}
+  .footer>p{font-size:9px}
+  .mobile-call{font-size:13px}
+}
